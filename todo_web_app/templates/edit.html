@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+rel="stylesheet">
+<title>Edit Task</title>
+<style>
+body {
+    font-family:Arial;
+    background:#f4f6f9;
+    text-align:center;
+}
+h2 {
+    background:#2c3e50;
+    color:white;
+    padding:15px;
+}
+form {
+    margin-top:30px;
+    background:white;
+    display:inline-block;
+    padding:25px;
+    border-radius:8px;
+    box-shadow:0px 0px 10px #ccc;
+}
+input,select {
+    padding:8px;
+    margin:10px;
+    width:200px;
+}
+button {
+    padding:8px 12px;
+    background:#2980b9;
+    color:white;
+    border:none;
+    cursor:pointer;
+    border-radius:4px;
+}
+button:hover {
+    background:#1f6391;
+}
+a {
+    display:block;
+    margin-top:15px;
+    text-decoration:none;
+    color:#2980b9;
+}
+a:hover{
+    text-decoration:underline;
+}
+</style>
+</head>
+<body>
+<div class="container mt-5">
+<h2 class="text-center mb-4">Edit Task</h2>
+<form method="POST" action="/update/{{index}}">
+<input type="text" name="title" value="{{task.title}}" required><br>
+<input type="date" name="due_date" value="{{task.due_date}}" required><br>
+<select name="status">
+<option value="pending"{% if task.status=="pending" %}selected{% endif %}>Pending</option>
+<option value="completed"{% if task.status=="completed" %}selected{% endif %}>Completed</option>
+</select><br><br>
+<button type="submit">Update Task</button></form>
+<a href="/">&#8592 Back To Home</a>
+</div>
+</body>
+</html>
